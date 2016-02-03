@@ -1,0 +1,227 @@
+<!doctype html>
+<title>HackProof | Home</title>
+<section>
+  <html>
+  <head>
+  <meta charset="utf-8">
+  <title>Untitled Document</title>
+  <style type="text/css">
+section {
+  display: block;
+  height: 300px;
+}
+body {
+  margin: 0;
+  font: arial, helvetica, sans-serif;
+  background: url(images/page%20background.jpg);
+}
+.hidden {
+  visibility: hidden;
+}
+#buttonToPageTwo{
+  margin-top: 5%;
+  
+}
+#firstDropDown{
+  margin-left: 40%; 
+}
+#secondDropDownHard{
+  margin-top: 20%;
+  margin-left: 40%; 
+}
+#buttonToThirdPage{
+  margin-bottom: 20%;
+  margin-right: 20%;  
+}
+#submitButton{
+  margin-top: 40%;  
+}
+#hackDesc{
+	color:#FFFFFF	
+}
+#codeFile{
+	color:#FFFFFF	
+}
+</style>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>
+$(function() {
+  var softwareTags = [];
+  var nonTechnicalTags = [];
+  var hackDescription = document.getElementById("description").value;
+  var percentCheating = ((Math.random()*100)%30)
+  
+  $('#firstDropDown').on('change', function (e) {
+      var optionSelected = $("option:selected", this);
+      var valueSelected = this.value;
+    $('#buttonToPageTwo').removeClass('hidden');
+    
+    switch(valueSelected){
+      case 'Hardware':
+        $('#secondDropDownHard').removeClass('hidden');
+        $('#softwareTags').addClass('hidden');
+        
+        break;
+      case 'Software':
+        $('#softwareTags').removeClass('hidden');
+        $('#secondDropDownHard').addClass('hidden');
+        break;
+    }
+  });
+  $("input:checkbox[name=softwareTags]:checked").each(function(){
+      softwareTags.push($(this).val());
+  });
+  $("input:checkbox[name=nonTechnicalCategories]:checked").each(function(){
+      nonTechnicalTags.push($(this).val());
+  });
+  $('#buttonToThirdPage').on('click', function(e){
+    $('#nonTechnicalTags').removeClass('hidden');
+  });
+  
+  $('#submitButton').on('click', function(e){
+	  if(e.keyCode === 13) {
+	    var parameters = { search: $(this).val() };
+	    $.get( '/searching',parameters, function(data) {
+	      $('#results').html(data);
+	    });
+  	};
+  });
+});
+  
+  $('#submitButton').on('click', function(e){
+	
+	
+/*	
+	    var softwareTags = [];
+  		var nonTechnicalTags = [];
+  		var hackDescription = document.getElementById("description").value;
+  		var percentCheating = ((Math.random()*100)%30)
+		window.alert(percentCheating+50);
+  });
+  */
+  
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top-240
+          }, 1000);
+          return false;
+        }
+      }
+    });
+  });
+</script>
+  </head>
+  
+  <body>
+  <section id="one">
+    <div style="margin: 40% 33%">
+      <select name="hardOrSoft" id="firstDropDown" >
+        <option value="default">Select Option</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Software">Software</option>
+      </select>
+      <a href="#two">
+      <input type="image" src="images/imagebutton.gif" alt="Next Part of Submission" class="hidden" id="buttonToPageTwo"/>
+      </a> </div>
+  </section>
+  <section id="two">
+    <div style="margin: 10% 30%">
+      <select name="hardSelect" id="secondDropDownHard" class="hidden">
+        <option value="default">Select Option</option>
+        <option value="MYO">MYO BAND</option>
+        <option value="Leap">LEAP MOTION</option>
+        <option value="Arduino">ARDUINO</option>
+        <option value="Estimote">ESTIMOTE</option>
+      </select>
+      <table width="200" id="softwareTags" class="hidden">
+        <tr>
+          <td><label>
+              <input type="checkbox" name="SoftwareTags" value="android" id="CheckboxGroup1_0">
+              Android</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="SoftwareTags" value="ios" id="CheckboxGroup1_1">
+              IOS</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="SoftwareTags" value="web" id="CheckboxGroup1_2">
+              Web</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="SoftwareTags" value="checkbox" id="CheckboxGroup1_3">
+              Node.js</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="SoftwareTags" value="checkbox" id="CheckboxGroup1_4">
+              Ajax</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="SoftwareTags" value="checkbox" id="CheckboxGroup1_5">
+              Cross-Platform</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="SoftwareTags" value="checkbox" id="CheckboxGroup1_6">
+              Parse</label></td>
+        </tr>
+      </table>
+      <a href="#three">
+      <input type="image" src="images/imagebutton.gif" alt="Next Part of Submission" id="buttonToThirdPage"/>
+      </a> </div>
+  </section>
+  <section id="three">
+    <div style="margin:40% 35%">
+      <table width="200" id="nonTechnicalTags" class="hidden">
+        <tr>
+          <td><label>
+              <input type="checkbox" name="nonTechnicalCategories" value="social" id="nonTechnicalCategories_0">
+              Social</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="nonTechnicalCategories" value="app" id="nonTechnicalCategories_1">
+              App</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="nonTechnicalCategories" value="game" id="nonTechnicalCategories_2">
+              Game</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="nonTechnicalCategories" value="problemSolve" id="nonTechnicalCategories_3">
+              Problem Solve</label></td>
+        </tr>
+        <tr>
+          <td><label>
+              <input type="checkbox" name="nonTechnicalCategories" value="innovation" id="nonTechnicalCategories_4">
+              Innovation</label></td>
+        </tr>
+      </table>
+      <a href="#four">
+      <input type="image" src="images/imagebutton.gif" alt="Next Part of Submission" id="buttonToFourthPage"/>
+      </a> </div>
+  </section>
+  <section id="four">
+    <div style="margin: 35%">
+      <label id="hackDesc">Enter Hack Description:<br></label>
+      <textarea id="description"></textarea>
+      <label id="codeFile"><br>Submit Code File:<br></label>
+      <input type="file">
+      <input type="image" src="images/submitbutton.gif" alt="Next Part of Submission" id="submitButton"/>
+      </div>
+  </section>
+  <section id="five" ></section>
+  </body>
+  </html>
+</section>
