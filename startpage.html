@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript</title>
+
+<!-- 
+	<style type="text/css">
+	div {color: blue; background-color: #66CCFF;}
+	</style>
+ -->
+
+ 	<link rel="stylesheet" type="text/css" href="href.css">
+ 	
+</head>
+<body>
+	<div id="header">
+		<h1 style="color:red; text-align:center">My Site</h1>
+	</div>
+	<div id="content">
+		<h2>
+			Hey, here's my first website after soo long!
+		</h2>
+		<ul> </ul>
+		<input id="name" type="text">
+		<button id="AddOne">Add One</button>
+	</div>
+	<script src="https://code.jquery.com/jquery-latest.min.js">
+
+	</script>
+
+	<script type="text/javascript">
+			$('ul').append('<li>veggies</li>');
+			$('#AddOne').click(function() {
+			$('ul').prepend('<li>' + $('#name').val() + '</li>');
+			});
+			</script>
+</body>
+</html>
